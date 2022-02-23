@@ -34,9 +34,9 @@ RUN download-antismash-databases
 # We now set up the GTDB-Tk databases
 SHELL ["conda", "run", "-n", "gtdbtk", "/bin/bash", "-c"]
 WORKDIR /opt/conda/envs/gtdbtk/share/gtdbtk-1.5.1/db
-#RUN wget --no-verbose --show-progress --progress=bar:force:noscroll https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
+#RUN /usr/bin/wget --no-verbose --show-progress --progress=bar:force:noscroll https://data.gtdb.ecogenomic.org/releases/latest/auxillary_files/gtdbtk_data.tar.gz
 # The following is the mirror download, which is sometimes faster
-RUN wget --no-verbose --show-progress --progress=bar:force:noscroll https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz
+RUN /usr/bin/wget --no-verbose --show-progress --progress=bar:force:noscroll https://data.ace.uq.edu.au/public/gtdb/data/releases/latest/auxillary_files/gtdbtk_data.tar.gz
 RUN tar xvf gtdbtk_data.tar.gz && rm gtdbtk_data.tar.gz
 
 # We now set up the kofamscan databases
