@@ -1,0 +1,7 @@
+echo "TINY EARTH GENOMICS VICE APP"
+echo "To use a tool, you must first start the relevant conda environment. For example:"
+echo ""
+echo "conda activate antismash"
+echo ""
+echo "Available conda environments: antismash, checkm, gtdbtk, kofamscan, prokka" 
+echo ""
