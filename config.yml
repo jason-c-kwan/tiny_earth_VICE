@@ -1,7 +1,7 @@
 # Path to your KO-HMM database
 # A database can be a .hmm file, a .hal file or a directory in which
 # .hmm files are. Omit the extension if it is .hal or .hmm file
-profile: /kofam_scan/profiles
+profile: /opt/conda/envs/kofamscan/bin/profiles
 
 # Path to the KO list file
 ko_list: /opt/conda/envs/kofamscan/bin/ko_list
