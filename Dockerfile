@@ -46,8 +46,8 @@ RUN wget ftp://ftp.genome.jp/pub/db/kofam/ko_list.gz && gunzip ko_list.gz
 ADD config.yml /opt/conda/envs/kofamscan/bin/config.yml
 
 # Add welcome message
-ADD welcome_message /home/jovyan/welcome_message
-RUN cat welcome_message >> /home/jovyan/.bashrc
+SHELL ["/bin/bash"]
+ADD welcome_message /home/jovyan/.bash_profile
 
 WORKDIR /
 
