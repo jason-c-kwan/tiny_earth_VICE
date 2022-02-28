@@ -3,5 +3,5 @@ echo "To use a tool, you must first start the relevant conda environment. For ex
 echo ""
 echo "conda activate antismash"
 echo ""
-echo "Available conda environments: antismash, checkm, gtdbtk, kofamscan, prokka" 
+echo "Available conda environments: antismash, kofamscan, prokka" 
 echo ""
