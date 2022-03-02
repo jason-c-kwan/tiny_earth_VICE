@@ -34,6 +34,7 @@ ADD config.yml /opt/conda/envs/kofamscan/bin/config.yml
 
 ## Add welcome message
 USER jovyan
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ADD welcome_message /home/jovyan/.welcome_message
 RUN cat /home/jovyan/.welcome_message >> /home/jovyan/.profile
 
