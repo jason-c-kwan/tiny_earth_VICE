@@ -37,6 +37,7 @@ USER jovyan
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ADD welcome_message /home/jovyan/.bash_profile
 RUN cat /home/jovyan/.bash_profile /home/jovyan/.bashrc >> /home/jovyan/.temp && rm /home/jovyan/.bashrc && mv /home/jovyan/.temp /home/jovyan/.bashrc && chmod u=rw,g=rw,o=r /home/jovyan/.bashrc
+RUN conda init bash
 
 WORKDIR /
 
