@@ -10,7 +10,7 @@ USER root
 RUN conda create -n antismash -y -c bioconda antismash
 
 # For kofamscan:
-RUN conda create -n kofamscan -y -c bioconda kofamscan
+RUN conda create -n kofamscan -y
 
 # For Prokka
 RUN conda create -y -n prokka 
@@ -25,8 +25,9 @@ RUN conda install -y -c bioconda prodigal blast=2.2 tbl2asn prokka
 SHELL ["conda", "run", "-n", "antismash", "/bin/bash", "-c"]
 RUN download-antismash-databases
 
-# We now set up the kofamscan databases
+# We now set up kofamscan and its databases
 SHELL ["conda", "run", "-n", "kofamscan", "/bin/bash", "-c"]
+RUN conda install -c bioconda kofamscan -y
 WORKDIR /opt/conda/envs/kofamscan/bin
 RUN wget ftp://ftp.genome.jp/pub/db/kofam/profiles.tar.gz && tar xvf profiles.tar.gz && rm profiles.tar.gz
 RUN wget ftp://ftp.genome.jp/pub/db/kofam/ko_list.gz && gunzip ko_list.gz
