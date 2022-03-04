@@ -8,7 +8,7 @@ ko_list: /opt/conda/envs/kofamscan/bin/ko_list
 
 # Path to an executable file of hmmsearch
 # You do not have to set this if it is in your $PATH
-hmmsearch: /opt/conda/envs/kofamscan/bin/hmmscan
+hmmsearch: /opt/conda/envs/kofamscan/bin/hmmsearch
 
 # Path to an executable file of GNU parallel
 # You do not have to set this if it is in your $PATH
