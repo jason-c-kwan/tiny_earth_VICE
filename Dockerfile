@@ -39,5 +39,8 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ADD welcome_message /home/jovyan/.welcome_message
 RUN cat /home/jovyan/.welcome_message >> /home/jovyan/.profile
 
+# Install R packages
+RUN R -e "install.packages(c('vegan', 'ggplot2', 'plotly', 'viridis', 'grid', 'reshape2'), dependencies=TRUE, repos='http://cran.us.r-project.org')"
+
 WORKDIR /
 

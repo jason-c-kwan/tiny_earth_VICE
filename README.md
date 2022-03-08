@@ -10,6 +10,14 @@ It has the following bioinformatics tools installed:
 * [GTDB-Tk](https://github.com/Ecogenomics/GTDBTk) (For classifying genomes taxonomically)
 * [CheckM](https://ecogenomics.github.io/CheckM/#:~:text=CheckM%20provides%20a%20set%20of,copy%20within%20a%20phylogenetic%20lineage.) (For assessing metagnomic bin quality)
 
+It also has the following R packages installed:
+* vegan
+* ggplot2
+* plotly
+* viridis
+* grid
+* reshape2
+
 If you would like to run the Docker image locally, first build or pull the image from Dockerhub, then run the following command:
 
 ```bash
