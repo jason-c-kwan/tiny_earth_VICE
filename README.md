@@ -7,8 +7,6 @@ It has the following bioinformatics tools installed:
 * [AntiSMASH](https://antismash.secondarymetabolites.org/#!/start) (For finding and annotating secondary metabolite pathways)
 * [Prokka](https://github.com/tseemann/prokka) (For annotating bacterial genomes)
 * [KofamScan](https://github.com/takaram/kofam_scan) (For sorting genes into functional categories)
-* [GTDB-Tk](https://github.com/Ecogenomics/GTDBTk) (For classifying genomes taxonomically)
-* [CheckM](https://ecogenomics.github.io/CheckM/#:~:text=CheckM%20provides%20a%20set%20of,copy%20within%20a%20phylogenetic%20lineage.) (For assessing metagnomic bin quality)
 
 It also has the following R packages installed:
 * vegan
