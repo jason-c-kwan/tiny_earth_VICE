@@ -40,7 +40,12 @@ ADD welcome_message /home/jovyan/.welcome_message
 RUN cat /home/jovyan/.welcome_message >> /home/jovyan/.profile
 
 # Install R packages
-RUN R -e "install.packages(c('vegan', 'ggplot2', 'plotly', 'viridis', 'grid', 'reshape2'), dependencies=TRUE, repos='http://cran.us.r-project.org')"
+RUN R -e "install.packages(c('vegan', 'ggplot2', 'plotly', 'viridis', 'grid', 'reshape2', 'ggalluvial'), dependencies=TRUE, repos='http://cran.us.r-project.org')"
+
+# Add some useful scripts, and set up an environment for them
+ADD bin_summary.py /usr/local/bin/bin_summary.py
+ADD core_genes.py /usr/local/bin/core_genes.py
+RUN conda create -n scripts -y -c conda-forge biopython pandas
 
 WORKDIR /
 

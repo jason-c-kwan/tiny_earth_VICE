@@ -15,6 +15,7 @@ It also has the following R packages installed:
 * viridis
 * grid
 * reshape2
+* ggalluvial
 
 If you would like to run the Docker image locally, first build or pull the image from Dockerhub, then run the following command:
 
