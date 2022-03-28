@@ -15,6 +15,9 @@ RUN conda create -n kofamscan -y
 # For Prokka
 RUN conda create -y -n prokka 
 
+# For BiG-SCAPE
+RUN conda create -y -n bigscape
+
 # We now install Prokka in its environment
 SHELL ["conda", "run", "-n", "prokka", "/bin/bash", "-c"]
 RUN conda install -y -c biobuilds perl=5.22
@@ -33,6 +36,20 @@ RUN wget ftp://ftp.genome.jp/pub/db/kofam/profiles.tar.gz && tar xvf profiles.ta
 RUN wget ftp://ftp.genome.jp/pub/db/kofam/ko_list.gz && gunzip ko_list.gz
 ADD config.yml /opt/conda/envs/kofamscan/bin/config.yml
 
+# Install BiG-SCAPE
+WORKDIR /
+SHELL ["conda", "run", "-n", "bigscape", "/bin/bash", "-c"]
+RUN conda install -y -c anaconda python=3.6 numpy scipy networkx scikit-learn=0.19.1
+RUN conda install -y -c bioconda hmmer fasttree
+RUN conda install -y -c conda-forge biopython=1.70
+RUN git clone https://git.wur.nl/medema-group/BiG-SCAPE.git && chmod +x /BiG-SCAPE/bigscape.py && chown -R jovyan /BiG-SCAPE
+WORKDIR /BiG-SCAPE
+RUN wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz && gunzip Pfam-A.hmm.gz
+RUN hmmpress Pfam-A.hmm
+ENV PATH="/BiG-SCAPE:${PATH}"
+
+WORKDIR /
+
 ## Add welcome message
 USER jovyan
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -48,4 +65,7 @@ ADD core_genes.py /usr/local/bin/core_genes.py
 RUN conda create -n scripts -y -c conda-forge biopython pandas
 
 WORKDIR /
+
+
+
 
