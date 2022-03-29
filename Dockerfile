@@ -18,6 +18,12 @@ RUN conda create -y -n prokka
 # For BiG-SCAPE
 RUN conda create -y -n bigscape
 
+# For clinker
+RUN conda create -y -n clinker
+
+# For Diamond
+RUN conda create -y -n diamond
+
 # We now install Prokka in its environment
 SHELL ["conda", "run", "-n", "prokka", "/bin/bash", "-c"]
 RUN conda install -y -c biobuilds perl=5.22
@@ -47,6 +53,15 @@ WORKDIR /BiG-SCAPE
 RUN wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz && gunzip Pfam-A.hmm.gz
 RUN hmmpress Pfam-A.hmm
 ENV PATH="/BiG-SCAPE:${PATH}"
+
+# Install clinker
+WORKDIR /
+SHELL ["conda", "run", "-n", "clinker", "/bin/bash", "-c"]
+RUN conda install -y -c conda-forge -c bioconda clinker-py
+
+# Install diamond
+SHELL ["conda", "run", "-n", "diamond", "/bin/bash", "-c"]
+RUN conda install -y -c bioconda diamond
 
 WORKDIR /
 

@@ -7,6 +7,9 @@ It has the following bioinformatics tools installed:
 * [AntiSMASH](https://antismash.secondarymetabolites.org/#!/start) (For finding and annotating secondary metabolite pathways)
 * [Prokka](https://github.com/tseemann/prokka) (For annotating bacterial genomes)
 * [KofamScan](https://github.com/takaram/kofam_scan) (For sorting genes into functional categories)
+* [BiG-SCAPE](https://git.wageningenur.nl/medema-group/BiG-SCAPE#:~:text=BiG%2DSCAPE%20(Biosynthetic%20Gene%20Similarity,Gene%20Cluster%20Families%20(GCFs) (For comparing antismash results)
+* [Clinker](https://github.com/gamcil/clinker) (For fine-grain comparisons of BGCs)
+* [DIAMOND](https://github.com/bbuchfink/diamond) (For searching for similar proteins)
 
 It also has the following R packages installed:
 * vegan

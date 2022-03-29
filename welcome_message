@@ -3,6 +3,6 @@ echo "To use a tool, you must first start the relevant conda environment. For ex
 echo ""
 echo "conda activate antismash"
 echo ""
-echo "Available conda environments: antismash, kofamscan, prokka, bigscape"
-echo "scripts (for bin_summary.py and core_genes.py)" 
+echo "Available conda environments: antismash, kofamscan, prokka, bigscape, clinker,"
+echo "diamond, scripts (for bin_summary.py and core_genes.py)" 
 echo ""
