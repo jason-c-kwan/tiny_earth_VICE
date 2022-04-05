@@ -5,20 +5,22 @@ This Dockerfile is designed to be used with [Cyverse](https://cyverse.org/), alt
 It has the following bioinformatics tools installed:
 
 * [AntiSMASH](https://antismash.secondarymetabolites.org/#!/start) (For finding and annotating secondary metabolite pathways)
-* [Prokka](https://github.com/tseemann/prokka) (For annotating bacterial genomes)
-* [KofamScan](https://github.com/takaram/kofam_scan) (For sorting genes into functional categories)
+* [Barrnap](https://github.com/tseemann/barrnap) (For finding ribosomal RNA genes in genomes)
 * [BiG-SCAPE](https://git.wageningenur.nl/medema-group/BiG-SCAPE) (For comparing antismash results)
 * [Clinker](https://github.com/gamcil/clinker) (For fine-grain comparisons of BGCs)
 * [DIAMOND](https://github.com/bbuchfink/diamond) (For searching for similar proteins)
+* [KofamScan](https://github.com/takaram/kofam_scan) (For sorting genes into functional categories)
+* [Prokka](https://github.com/tseemann/prokka) (For annotating bacterial genomes)
 
 It also has the following R packages installed:
-* vegan
-* ggplot2
-* plotly
-* viridis
-* grid
-* reshape2
+
 * ggalluvial
+* ggplot2
+* grid
+* plotly
+* reshape2
+* vegan
+* viridis
 
 If you would like to run the Docker image locally, first build or pull the image from Dockerhub, then run the following command:
 

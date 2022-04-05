@@ -24,6 +24,9 @@ RUN conda create -y -n clinker
 # For Diamond
 RUN conda create -y -n diamond
 
+# For barrnap
+RUN conda create -y -n barrnap
+
 # We now install Prokka in its environment
 SHELL ["conda", "run", "-n", "prokka", "/bin/bash", "-c"]
 RUN conda install -y -c biobuilds perl=5.22
@@ -62,6 +65,10 @@ RUN conda install -y -c conda-forge -c bioconda clinker-py
 # Install diamond
 SHELL ["conda", "run", "-n", "diamond", "/bin/bash", "-c"]
 RUN conda install -y -c bioconda diamond
+
+# Install barrnap
+SHELL ["conda", "run", "-n", "barrnap", "/bin/bash", "-c"]
+RUN conda install -y -c bioconda barrnap
 
 WORKDIR /
 
