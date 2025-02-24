@@ -27,6 +27,9 @@ RUN conda create -y -n diamond
 # For barrnap
 RUN conda create -y -n barrnap
 
+# For 16S visualization
+RUN conda create -y -n community -c conda-forge scikit-bio
+
 # We now install Prokka in its environment
 SHELL ["conda", "run", "-n", "prokka", "/bin/bash", "-c"]
 RUN conda install -y -c biobuilds perl=5.22
