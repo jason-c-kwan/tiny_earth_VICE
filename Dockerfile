@@ -4,45 +4,48 @@ LABEL maintainer="Jason Kwan <jason.kwan@wisc.edu>"
 
 USER root
 
+# Install mamba for better dependency resolution
+RUN conda install -n base -c conda-forge mamba -y
+
 # First set up conda environments
 
 # For antiSMASH:
-RUN conda create -n antismash -y -c bioconda antismash
+RUN mamba create -n antismash -y -c conda-forge -c bioconda -c defaults --strict-channel-priority antismash
 
 # For kofamscan:
-RUN conda create -n kofamscan -y
+RUN mamba create -n kofamscan -y
 
 # For Prokka
-RUN conda create -y -n prokka 
+RUN mamba create -y -n prokka 
 
 # For BiG-SCAPE
-RUN conda create -y -n bigscape
+RUN mamba create -y -n bigscape
 
 # For clinker
-RUN conda create -y -n clinker
+RUN mamba create -y -n clinker
 
 # For Diamond
-RUN conda create -y -n diamond
+RUN mamba create -y -n diamond
 
 # For barrnap
-RUN conda create -y -n barrnap
+RUN mamba create -y -n barrnap
 
 # For 16S visualization
-RUN conda create -y -n community -c conda-forge scikit-bio
+RUN mamba create -y -n community -c conda-forge scikit-bio
 
 # We now install Prokka in its environment
 SHELL ["conda", "run", "-n", "prokka", "/bin/bash", "-c"]
-RUN conda install -y -c biobuilds perl=5.22
-RUN conda install -y -c conda-forge parallel
-RUN conda install -y -c bioconda prodigal blast=2.2 tbl2asn prokka
+RUN mamba install -y -c biobuilds perl=5.22
+RUN mamba install -y -c conda-forge parallel
+RUN mamba install -y -c bioconda prodigal blast=2.2 tbl2asn prokka
 
 # We now need to download the antiSMASH databases
 SHELL ["conda", "run", "-n", "antismash", "/bin/bash", "-c"]
-RUN download-antismash-databases
+RUN pip install nrpys && download-antismash-databases
 
 # We now set up kofamscan and its databases
 SHELL ["conda", "run", "-n", "kofamscan", "/bin/bash", "-c"]
-RUN conda install -c bioconda kofamscan -y
+RUN mamba install -c bioconda kofamscan -y
 WORKDIR /opt/conda/envs/kofamscan/bin
 RUN wget ftp://ftp.genome.jp/pub/db/kofam/profiles.tar.gz && tar xvf profiles.tar.gz && rm profiles.tar.gz
 RUN wget ftp://ftp.genome.jp/pub/db/kofam/ko_list.gz && gunzip ko_list.gz
@@ -57,9 +60,9 @@ RUN cat /home/jovyan/.welcome_message >> /home/jovyan/.profile
 # Install BiG-SCAPE
 WORKDIR /
 SHELL ["conda", "run", "-n", "bigscape", "/bin/bash", "-c"]
-RUN conda install -y -c anaconda python=3.6 numpy scipy networkx scikit-learn=0.19.1
-RUN conda install -y -c bioconda hmmer fasttree
-RUN conda install -y -c conda-forge biopython=1.70
+RUN mamba install -y -c anaconda python=3.6 numpy scipy networkx scikit-learn=0.19.1
+RUN mamba install -y -c bioconda hmmer fasttree
+RUN mamba install -y -c conda-forge biopython=1.70
 RUN git clone https://git.wur.nl/medema-group/BiG-SCAPE.git && chmod +x /BiG-SCAPE/bigscape.py && chown -R jovyan /BiG-SCAPE
 WORKDIR /BiG-SCAPE
 RUN wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz && gunzip Pfam-A.hmm.gz
