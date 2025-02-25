@@ -32,7 +32,7 @@ RUN mamba create -y -n diamond
 RUN mamba create -y -n barrnap
 
 # For 16S visualization
-RUN mamba create -y -n community -c conda-forge scikit-bio pandas numpy matplotlib
+RUN mamba create -y -n community -c conda-forge scikit-bio pandas numpy matplotlib scikit-learn
 SHELL ["conda", "run", "-n", "community", "/bin/bash", "-c"]
 RUN pip install ipykernel && python -m ipykernel install --name community --display-name "Python (community)"
 
