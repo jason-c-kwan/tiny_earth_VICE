@@ -77,6 +77,7 @@ RUN wget ftp://ftp.ebi.ac.uk/pub/databases/Pfam/releases/Pfam32.0/Pfam-A.hmm.gz 
 RUN hmmpress Pfam-A.hmm
 RUN pip install .
 ENV PATH="/BiG-SCAPE:${PATH}"
+RUN chmod a+x /BiG-SCAPE/bigscape.py
 RUN pip install ipykernel && python -m ipykernel install --name bigscape --display-name "Python (bigscape)"
 
 # Install clinker
