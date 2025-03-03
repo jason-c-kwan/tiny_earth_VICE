@@ -56,6 +56,7 @@ WORKDIR /opt/conda/envs/kofamscan/bin
 RUN wget ftp://ftp.genome.jp/pub/db/kofam/profiles.tar.gz && tar xvf profiles.tar.gz && rm profiles.tar.gz
 RUN wget ftp://ftp.genome.jp/pub/db/kofam/ko_list.gz && gunzip ko_list.gz
 ADD config.yml /opt/conda/envs/kofamscan/bin/config.yml
+RUN chmod 644 /opt/conda/envs/kofamscan/bin/config.yml
 RUN pip install ipykernel && python -m ipykernel install --name kofamscan --display-name "Python (kofamscan)"
 
 ### Add welcome message
