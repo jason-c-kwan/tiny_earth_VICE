@@ -78,6 +78,7 @@ RUN hmmpress Pfam-A.hmm
 RUN pip install .
 ENV PATH="/BiG-SCAPE:${PATH}"
 RUN chmod a+x /BiG-SCAPE/bigscape.py
+RUN chmod -R a+wx /BiG-SCAPE/big_scape
 RUN pip install ipykernel && python -m ipykernel install --name bigscape --display-name "Python (bigscape)"
 
 # Install clinker
